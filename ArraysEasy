@@ -1,0 +1,32 @@
+LARGEST ELEMENT 
+import java.util.*;
+class sol{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();                                                   TC : O(n)
+        }
+        int temp=Integer.MIN_VALUE;                                                SC : O(1)
+        for(int i=0;i<n;i++){
+            if(arr[i]>temp){
+                temp=arr[i];
+            }
+        }
+        System.out.print(temp);
+    }
+}
+import java.util.*;
+class sol{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];                                                    TC : O(n log n)
+        for(int i=0;i<n;i++){                                                    SC : O(log n)
+            arr[i]=sc.nextInt();
+        }
+        Arrays.sort(arr);
+        System.out.print(arr[n-1]);
+    }
+}
