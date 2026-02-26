@@ -47,3 +47,75 @@ class sol{
     }
 }
 -----------------------------------------------------------------------
+MAXIMUM SUM OF DISTINCT SUBARRAY WITH LENGTH K (HASHMAO)
+import java.util.*;
+class sol{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int k=sc.nextInt();
+        int sum=0;
+        int maximum=0;
+   
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<n;i++){
+            sum=sum+arr[i];
+            map.put(arr[i],map.getOrDefault(arr[i],0)+1);
+            if(i>=k){
+                sum=sum-arr[i-k];
+                map.put(arr[i-k],map.getOrDefault(arr[i-k],0)-1);
+                if(map.get(arr[i-k])==0){
+                    map.remove(arr[i-k]);
+                }
+            }
+            if(i>=k && map.size()==k){
+                maximum=Math.max(maximum,sum);
+            }
+        }
+        System.out.print(maximum);
+    }
+}
+--------------------------------------------------------------------------------------
+MAXIMUM SUM OF DISTINCT ELEMENTS WITH LENGTH K (SET)
+import java.util.*;
+class sol{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int maximum=0;
+        int sum=0;
+        int k=sc.nextInt();
+        Set<Integer> set=new HashSet<>();
+        int start=0;
+        for(int end=0;end<n;end++){
+            while(set.contains(arr[end])){
+                set.remove(arr[start]);
+                sum=sum-arr[start];
+                start++;
+            }
+            sum=sum+arr[end];
+            set.add(arr[end]);
+            while(end-start+1>k){
+                set.remove(arr[start]);
+                sum=sum-arr[start];
+                start++;
+            }
+            if(end-start+1==k){
+                maximum=Math.max(maximum,sum);
+            }
+            
+            
+        }
+    System.out.print(maximum);
+        
+    }
+}
+--------------------------------------------------------------------------------------------
