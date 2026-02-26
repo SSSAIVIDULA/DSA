@@ -1,0 +1,49 @@
+MAXIMUM  SUBARRAY SUM IN GIVEN K SIZE 
+import java.util.*;
+class sol{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int sum=0;
+        int k=sc.nextInt();
+        for(int i=0;i<k;i++){
+            sum+=arr[i];
+        }
+        int total=0;
+        int max=sum;
+        for(int i=k;i<n;i++){
+            sum=sum+arr[i]-arr[i-k];
+            total=Math.max(sum,total);
+        }
+        System.out.print(total);
+    }
+}
+--------------------------------------------------------------------------
+LONGEST UNIQUE SUBSTRING 
+import java.util.*;
+class sol{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        int start=0;
+        int end=0;
+        int maximum=0;
+        Set<Character> set=new HashSet<>();
+        while(end<str.length()){
+            char c=str.charAt(end);
+            while(set.contains(c)){
+                set.remove(str.charAt(start));
+                start++;
+            }
+            set.add(c);
+            maximum=Math.max(maximum,end-start+1);
+            end++;
+        }
+        System.out.print(maximum);
+    }
+}
+-----------------------------------------------------------------------
