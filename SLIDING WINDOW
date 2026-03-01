@@ -24,6 +24,7 @@ class sol{
 }
 --------------------------------------------------------------------------
 LONGEST UNIQUE SUBSTRING 
+(set)
 import java.util.*;
 class sol{
     public static void main(String[] args){
@@ -46,8 +47,33 @@ class sol{
         System.out.print(maximum);
     }
 }
+
+(map)
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    String str=sc.nextLine();
+    int start=0;
+    int end=0;
+    int maximum=0;
+    Map<Character,Integer> map=new HashMap<>();
+    while(end<str.length()){
+      char c=str.charAt(end);
+     
+      if(map.containsKey(c)){
+         start=Math.max(start,map.get(c)+1);
+      }
+       map.put(c,end);
+      maximum=Math.max(maximum,end-start+1);
+      end++;
+      
+    }
+    System.out.print(maximum);
+  }
+}
 -----------------------------------------------------------------------
-MAXIMUM SUM OF DISTINCT SUBARRAY WITH LENGTH K (HASHMAO)
+MAXIMUM SUM OF DISTINCT SUBARRAY WITH LENGTH K (HASHMAP)
 import java.util.*;
 class sol{
     public static void main(String[] args){
@@ -175,3 +201,78 @@ class sol{
   }
 }
 -----------------------------------------------------------------------------------------
+MAXIMUM LENGTH OF SUBSTRING CONTAIN VOWEL OF SIZE K 
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    char[] arr=new char[n];
+    for(int i=0;i<n;i++){
+      arr[i]=sc.next().charAt(0);
+    }
+    int k=sc.nextInt();
+    int start=0;
+    int maximum=0;
+    int end=0;
+    int count=0;
+    
+    while(end<n){
+      if(end<k && (arr[end]=='a' || arr[end]=='e' || arr[end]=='i'||
+        arr[end]=='o' || arr[end]=='u')){
+          count++;
+        }
+      if(end>=k){
+        if(arr[end-k]=='a' || arr[end-k]=='e' || arr[end-k]=='i'||
+        arr[end-k]=='o' || arr[end-k]=='u'){
+          count--;
+          start++;
+        }
+        if(arr[end]=='a' || arr[end]=='e' || arr[end]=='i'||
+        arr[end]=='o' || arr[end]=='u'){
+          count++;
+        }
+      }
+      maximum=Math.max(maximum,count);
+      end++;
+        
+    }
+    System.out.print(maximum);
+  }
+}
+-----------------------------------------------------------------------------------------------------------
+LONGEST SUBSTRING WITH K DISTINCT ELEMENTS(REPETATION ALLOWED)
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    char[] arr=new char[n];
+    for(int i=0;i<n;i++){
+      arr[i]=sc.next().charAt(0);
+    }
+    int k=sc.nextInt();
+    Map<Character,Integer> map=new HashMap<>();
+    int start=0;
+    int end=0;
+    int maximum=0;
+    while(end<n){
+      char c=arr[end];
+      
+      while(map.size()>k){
+        map.put(arr[start],map.getOrDefault(arr[start],0)-1);
+        if(map.get(arr[start])==0){
+          map.remove(arr[start]);
+        }
+        start++;
+      }
+      map.put(c,map.getOrDefault(c,0)+1);
+      if(map.size()==k){
+        maximum=Math.max(maximum,end-start+1);
+      }
+      end++;
+    }
+    System.out.print(maximum);
+  }
+}
+------------------------------------------------------------------------------------------
