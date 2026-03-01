@@ -276,3 +276,43 @@ class sol{
   }
 }
 ------------------------------------------------------------------------------------------
+MAXIMUM NO OF VOWELS PRESENT IN SUBSTRING IN LENGTH K 
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    char[] arr=new char[n];
+    for(int i=0;i<n;i++){
+      arr[i]=sc.next().charAt(0);
+    }
+    int k=sc.nextInt();
+
+    int maximum=0;
+    int end=0;
+    int count=0;
+    
+    while(end<n){
+      if(end<k && (arr[end]=='a' || arr[end]=='e' || arr[end]=='i'||
+        arr[end]=='o' || arr[end]=='u')){
+          count++;
+        }
+      if(end>=k){
+        if(arr[end-k]=='a' || arr[end-k]=='e' || arr[end-k]=='i'||
+        arr[end-k]=='o' || arr[end-k]=='u'){
+          count--;
+        
+        }
+        if(arr[end]=='a' || arr[end]=='e' || arr[end]=='i'||
+        arr[end]=='o' || arr[end]=='u'){
+          count++;
+        }
+      }
+      maximum=Math.max(maximum,count);
+      end++;
+        
+    }
+    System.out.print(maximum);
+  }
+}
+----------------------------------------------------------------------------------------------------------
