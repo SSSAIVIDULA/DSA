@@ -346,3 +346,32 @@ class sol{
   }
 }
 --------------------------------------------------------------------------------------------------------------
+SUBARRAY WITH K DISTINCT INTEGER(EXACT K) - exact k means atmost k - atmost k-1
+class Solution {
+    public int subarraysWithKDistinct(int[] nums, int k) {
+        int atmostK=subarrayCalculation(nums,k);
+        int atmostKminus1=subarrayCalculation(nums,k-1);
+        return atmostK-atmostKminus1;
+    }
+    public int subarrayCalculation(int[] nums,int k){
+        int start=0;
+        int end=0;
+        int maximum=0;
+        Map<Integer,Integer> map=new HashMap<>();
+        while(end<nums.length){
+            map.put(nums[end],map.getOrDefault(nums[end],0)+1);
+            while(map.size()>k){
+                map.put(nums[start],map.getOrDefault(nums[start],0)-1);
+                if(map.get(nums[start])==0){
+                    map.remove(nums[start]);
+                }
+                start++;
+            }
+            maximum+=end-start+1;
+            end++;
+        }
+     return maximum;
+}
+
+}
+----------------------------------------------------------------------------------------------------------------
