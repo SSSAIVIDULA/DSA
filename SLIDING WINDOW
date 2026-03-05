@@ -395,4 +395,38 @@ class Solution {
     }
 }
 ----------------------------------------------------------------------------------------------------------------
-
+ANAGRAM (sTRINGS)
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    String str=sc.nextLine();
+    String target=sc.nextLine();
+    Map<Character,Integer> map=new HashMap<>();
+    Map<Character,Integer> map2=new HashMap<>();
+    for(char c:target.toCharArray()){
+      map.put(c,map.getOrDefault(c,0)+1);
+    }
+    int start=0;
+    int end=0;
+    while(end<str.length()){
+      char c=str.charAt(end);
+      map2.put(c,map2.getOrDefault(c,0)+1);
+      while(end-start+1>target.length()){
+        map2.put(str.charAt(start),map2.getOrDefault(str.charAt(start),0)-1);
+        if(map2.get(str.charAt(start))==0){
+          map2.remove(str.charAt(start));
+        }
+        start++;
+      }
+      if(end-start+1==target.length()){
+        if(map.equals(map2)){
+          System.out.print(start);
+        }
+      
+      }
+        end++;
+    }
+  }
+}
+----------------------------------------------------------------------------------------------------------------
