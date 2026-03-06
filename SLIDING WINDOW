@@ -395,7 +395,7 @@ class Solution {
     }
 }
 ----------------------------------------------------------------------------------------------------------------
-ANAGRAM (STRINGS)
+ANAGRAM (STRINGS) (using Map)
 import java.util.*;
 class sol{
   public static void main(String[] args){
@@ -428,5 +428,35 @@ class sol{
         end++;
     }
   }
+}
+
+(using Array)
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        int[] strArray=new int[26];
+        int[] targetArray=new int[26];
+        int[] result=new int[26];
+        int start=0;
+        int end=0;
+        List<Integer> list=new ArrayList<>();
+        for(char c:p.toCharArray()){
+            targetArray[c-'a']++;
+        }
+        while(end<s.length()){
+           char c=s.charAt(end);
+           strArray[c-'a']++;
+           while(end-start+1>p.length()){
+            strArray[s.charAt(start)-'a']--;
+            start++;
+           }
+           if(end-start+1==p.length()){
+            if(Arrays.equals(strArray,targetArray)){
+                list.add(start);
+            }
+           }
+        end++;
+        }
+        return list;
+    }
 }
 ----------------------------------------------------------------------------------------------------------------
