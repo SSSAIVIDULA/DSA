@@ -395,7 +395,7 @@ class Solution {
     }
 }
 ----------------------------------------------------------------------------------------------------------------
-ANAGRAM (sTRINGS)
+ANAGRAM (STRINGS)
 import java.util.*;
 class sol{
   public static void main(String[] args){
