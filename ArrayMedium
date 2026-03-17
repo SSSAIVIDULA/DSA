@@ -1,0 +1,54 @@
+Two Sum 
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int[] arr=new int[n];
+    for(int i=0;i<n;i++){
+      arr[i]=sc.nextInt();
+    }
+    int k=sc.nextInt();
+    Map<Integer,Integer> map=new HashMap<>();
+    for(int i=0;i<n;i++){
+
+      int complement=k-arr[i];
+      if(map.containsKey(complement)){
+        System.out.print("true");
+        return;
+      }
+      map.put(arr[i],i);
+    }
+    System.out.print("false");
+  }
+}
+
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int[] arr=new int[n];
+    for(int i=0;i<n;i++){
+      arr[i]=sc.nextInt();
+    }
+    int k=sc.nextInt();
+    int left=0;
+    int right=n-1;
+    Arrays.sort(arr);
+    while(left<right){
+      if(arr[left]+arr[right]==k){
+        System.out.print("true");
+        return;
+      }
+      else if(arr[left]+arr[right]<k){
+        left++;
+      }
+      else{
+        right--;
+      }
+    }
+    System.out.print("false");
+  }
+}
+----------------------------------------------------------------------------------------------------------
