@@ -198,3 +198,30 @@ System.out.print(maximum);
   }
 }
 -----------------------------------------------------
+(optimal)
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int[] arr=new int[n];
+    for(int i=0;i<n;i++){
+      arr[i]=sc.nextInt();
+    }
+    int currsum=0;
+    int maximum=Integer.MIN_VALUE;
+    for(int i=0;i<n;i++){
+      int temp=currsum+arr[i];
+      if(temp<arr[i]){
+        currsum=arr[i];
+      }
+      else{
+        currsum=temp;
+      }
+      maximum=Math.max(maximum,currsum);
+    }
+    System.out.print(maximum);
+    
+  }
+}
+----------------------------------------------------------------------------------
