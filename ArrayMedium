@@ -392,4 +392,36 @@ class sol{
     System.out.print(maximum);
   }
 }
+
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int[] arr=new int[n];
+     HashSet<Integer> set=new HashSet<>();
+    for(int i=0;i<n;i++){
+      arr[i]=sc.nextInt();
+      set.add(arr[i]);
+    }
+    int maximum=0;
+    int count=1;
+    for( int x:set){
+      if(!set.contains(x-1)){
+        int start=x;
+        int current =x;
+        while(set.contains(current+1)){
+          current++;
+          count++;
+        }
+        maximum=Math.max(count,maximum);
+        count=1;
+      }
+    }
+    System.out.print(maximum);
+   
+    
+  }
+}
+
 ---------------------------------------------------------------------------
