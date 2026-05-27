@@ -426,6 +426,7 @@ class sol{
 
 ---------------------------------------------------------------------------
 MATRIX ZERO
+(changed the row and column to -1 once got 0)
 import java.util.*;
 class sol{
   public static void main(String[] args){
@@ -470,7 +471,7 @@ class sol{
   }
 }
 
-
+(creating two seperate arrays and marking them visited once got 0)
 import java.util.*;
 class sol{
   public static void main(String[] args){
