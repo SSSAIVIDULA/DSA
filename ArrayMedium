@@ -425,3 +425,84 @@ class sol{
 }
 
 ---------------------------------------------------------------------------
+MATRIX ZERO
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int m=sc.nextInt();
+    int[][] matrix=new int[n][m];
+    for(int i=0;i<n;i++){
+      for(int j=0;j<m;j++){
+        matrix[i][j]=sc.nextInt();
+      }
+    }
+    for(int i=0;i<n;i++){
+      for(int j=0;j<m;j++){
+        if(matrix[i][j]==0){
+          for(int col=0;col<n;col++){
+            if(matrix[i][col]!=0){
+            matrix[i][col]=-1;
+            }
+          }
+          for(int row=0;row<n;row++){
+           if( matrix[row][j]!=0 ){
+              matrix[row][j]=-1;
+            }
+          }
+        }
+      }
+    }
+    for(int i=0;i<n;i++){
+      for(int j=0;j<m;j++){
+        if(matrix[i][j]==-1){
+          matrix[i][j]=0;
+        }
+      }
+    }
+    for(int i=0;i<n;i++){
+      for(int j=0;j<m;j++){
+        System.out.print(matrix[i][j]+" ");
+      }
+      System.out.println();
+    }
+  }
+}
+
+
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int m=sc.nextInt();
+    int[][] matrix=new int[n][m];
+    for(int i=0;i<n;i++){
+      for(int j=0;j<m;j++){
+        matrix[i][j]=sc.nextInt();
+      }
+    }
+    int[] col=new int[m];
+    int[] row=new int[n];
+    for(int i=0;i<n;i++){
+      for(int j=0;j<m;j++){
+        if(matrix[i][j]==0){
+          col[i]=1;
+          row[j]=1;
+        }
+      }
+    }
+    for(int i=0;i<n;i++){
+      for(int j=0;j<m;j++){
+        if(row[j]==1||col[i]==1){
+          System.out.print("0");
+        }
+        else{
+          System.out.print(matrix[i][j]);
+        }
+      }
+      System.out.println();
+    }
+  }
+}
