@@ -507,3 +507,62 @@ class sol{
     }
   }
 }
+
+(optimal)
+import java.util.*;
+class sol{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int m=sc.nextInt();
+    int[][] matrix=new int[n][m];
+    for(int i=0;i<n;i++){
+      for(int j=0;j<m;j++){
+        matrix[i][j]=sc.nextInt();
+      }
+    }
+    boolean firstrow=false;
+    boolean firstcol=false;
+    
+    //set 0th col,row marked as 0 if any 0 found in
+    for(int i=0;i<n;i++){
+      for(int j=0;j<m;j++){
+        if(matrix[i][j]==0){
+          if(i==0) firstrow=true;
+          if(j==0) firstcol=true;
+          matrix[i][0]=0;
+          matrix[0][j]=0;
+        }
+      }
+    }
+    
+    //traverse the inner matrix by checking the 0th col,row 
+    
+    for(int i=1;i<n;i++){
+      for(int j=1;j<m;j++){
+        if(matrix[i][0]==0 || matrix[0][j]==0){
+          matrix[i][j]=0;
+        }
+      }
+    }
+    
+    //0th row,col check if any 0 found already 
+    if(firstrow){
+      for(int j=0;j<n;j++){
+        matrix[0][j]=0;
+      }
+    }
+    if(firstcol){
+      for(int i=0;i<m;i++){
+        matrix[i][0]=0;
+      }
+    }
+    for(int i=0;i<n;i++){
+      for(int j=0;j<m;j++){
+        System.out.print(matrix[i][j]);
+      }
+      System.out.println();
+      
+    }
+  }
+}
