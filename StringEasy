@@ -49,3 +49,63 @@ class sol{
   }
 }
 --------------------------------------------------------------------------------------
+LONGEST COMMON PREFIX
+import java.util.*;
+class sol{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        String[] words=new String[n];
+        for(int i=0;i<n;i++){
+            words[i]=sc.next();
+        }
+        String compare=words[0];
+        String ans="";
+        String check="";
+        for(int i=1;i<n;i++){
+             check=words[i];
+            int min=Math.min(check.length(),compare.length());
+            int k=0;
+            for(int j=0;j<min;j++){
+                if(check.charAt(j)==compare.charAt(j)){
+                    ans+=check.charAt(j);
+                }
+                else{
+                    break;
+                }
+            }
+            compare=ans.toString();
+            ans="";
+        }
+        System.out.print(compare);
+    }
+}
+
+SORT & COMPARE FIRST AND LAST
+import java.util.*;
+class sol{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        String[] words=new String[n];
+        for(int i=0;i<n;i++){
+            words[i]=sc.next();
+        }
+        StringBuilder ans=new StringBuilder();
+        Arrays.sort(words);
+        String first=words[0];
+        String last=words[n-1];
+        for(int i=0;i<first.length();i++){
+            if(first.charAt(i)==last.charAt(i)){
+                ans.append(first.charAt(i));
+            }
+            else{
+                break;
+            }
+        }
+        System.out.print(ans);
+        
+    }
+}
+-------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
