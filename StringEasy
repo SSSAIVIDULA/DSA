@@ -82,6 +82,7 @@ class sol{
 }
 
 SORT & COMPARE FIRST AND LAST
+(need to return as toString() the stringbuilder, because it was obj before)
 import java.util.*;
 class sol{
     public static void main(String[] args){
