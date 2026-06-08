@@ -52,3 +52,12 @@ REMOVE LAST NODE
     }
     t.next=null;
 -----------------------------------------------------------------------------------------
+LENGTH
+ Node temp=head;
+    int count=0;
+    while(temp!=null){
+      count++;
+      temp=temp.next;
+    }
+    System.out.print(count);
+------------------------------------------------------------------------------------
