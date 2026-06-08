@@ -44,3 +44,11 @@ INSERTING IN THE END AND START
     headNode.next=head;
     head=headNode;
 -------------------------------------------------------------------------------------------
+REMOVE LAST NODE 
+
+    Node t=head;
+    while(t.next.next!=null){
+      t=t.next;
+    }
+    t.next=null;
+-----------------------------------------------------------------------------------------
